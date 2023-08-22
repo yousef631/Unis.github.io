@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+    <meta charset="UTF-8">
+    <title>Universties</title>
+
+    
+    
+    </head>
+    <body>
+        <input type="text" id="in" placeholder="Enter your Country Name" spellcheck="false">
+        <button id="bt">Submit</button>
+        <h1 id="h">Universties will be displayed here </h1>
+       
+        
+        <script>
+            var input =document.getElementById("in")
+var btn =document.getElementById("bt")
+var names=document.getElementById("h")
+
+var data
+async function checkname(country){
+    var response = await fetch("http://universities.hipolabs.com/search?country="+country);
+    data = await response.json();
+    for(let i=0;i<data.length;i++){
+        document.write("<br><br>"+(data[i].name)+"<br>")}
+    }
+
+btn.onclick =function(){
+    checkname(input.value)
+}
+
+            </script>
+        
+
+    </body>
+</html>        
